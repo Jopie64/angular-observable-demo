@@ -21,5 +21,6 @@ export class AppComponent {
     map(v => parseInt(v, 10)),
     filter(v => !isNaN(v)));
 
-  outputImageUrl$ = of('https://picsum.photos/500');
+  outputImageUrl$ = this.output$.pipe(
+    map(v => `https://picsum.photos/500?imageid=${v}`));
 }
