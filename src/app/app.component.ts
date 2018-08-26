@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
 
 interface Card {
   value: string;
@@ -12,18 +13,7 @@ interface Card {
 })
 export class AppComponent {
   title = 'angular-observable-demo';
+  input$ = new Subject<string>();
 
-  cards: Card[] = [];
-
-  addCard(card: Card) {
-    this.cards.push(card);
-  }
-
-  onClick() {
-    this.addCard({title: 'Usefull things', value: 'Hello'});
-  }
-
-  onClear() {
-    this.cards = [];
-  }
+  output$ = this.input$;
 }

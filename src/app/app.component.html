@@ -1,11 +1,6 @@
-<button (click)="onClick()">Click me!</button>
-<button (click)="onClear()">Clear</button>
-<div class="cards">
-  <div class="card" *ngFor="let card of cards">
-    <div class="container">
-      <h4><b>{{ card.title }}</b></h4> 
-      <p>{{ card.value }}</p>
-    </div>
-  </div>
+<div>
+  Input: <input (keyup)="input$.next($event.target.value)">
 </div>
-
+<div>
+  Output: {{ output$ | async }}
+</div>
