@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 
 interface Card {
   value: string;
@@ -15,5 +15,7 @@ export class AppComponent {
   title = 'angular-observable-demo';
   input$ = new Subject<string>();
 
-  output$ = this.input$;
+  output$ = of('No output yet...');
+
+  outputImageUrl$ = of('https://picsum.photos/500');
 }
