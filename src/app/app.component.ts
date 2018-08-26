@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject, of } from 'rxjs';
+import { debounceTime, map, filter } from 'rxjs/operators';
 
 interface Card {
   value: string;
@@ -15,7 +16,10 @@ export class AppComponent {
   title = 'angular-observable-demo';
   input$ = new Subject<string>();
 
-  output$ = of('No output yet...');
+  output$ = this.input$.pipe(
+    debounceTime(1000),
+    map(v => parseInt(v, 10)),
+    filter(v => !isNaN(v)));
 
   outputImageUrl$ = of('https://picsum.photos/500');
 }
