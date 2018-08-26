@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { Subject, of } from 'rxjs';
-import { debounceTime, map, filter } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
-interface Card {
-  value: string;
-  title: string;
-}
+// To find operators, check this website:
+// http://reactivex.io/documentation/operators.html#tree
 
 @Component({
   selector: 'app-root',
@@ -16,11 +14,7 @@ export class AppComponent {
   title = 'angular-observable-demo';
   input$ = new Subject<string>();
 
-  output$ = this.input$.pipe(
-    debounceTime(1000),
-    map(v => parseInt(v, 10)),
-    filter(v => !isNaN(v)));
+  output$ = of(`To find operators, check this website: http://reactivex.io/documentation/operators.html#tree`);
 
-  outputImageUrl$ = this.output$.pipe(
-    map(v => `https://picsum.photos/500?imageid=${v}`));
+  outputImageUrl$ = of(`https://picsum.photos/500?imageid=${3}`);
 }
