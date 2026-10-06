@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Subject, of, Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
@@ -7,6 +8,7 @@ import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
+  imports: [AsyncPipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
